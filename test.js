@@ -9,42 +9,52 @@ calculate how many words in the words array library
 Produce a word for test and the four explaination choice
 --------------------------------------------------------------------------------------------------------------------------------*/
 
-		$('#start_test').click(function(){
+		$('.start_test').click(function(){
 
 			//Genenrate a random number, which will be used for selceting the test word from the vocabulary array library 
-			random_number = math.floor(math.random()*words_count);
+			random_number1 = Math.floor(Math.random()*words_count);
+			random_number2 = Math.floor(Math.random()*words_count);
+			random_number3 = Math.floor(Math.random()*words_count);
+			random_number4 = Math.floor(Math.random()*words_count);
 
-    		//Shuffle the explaination array order  		
-    		randomExplainations = vocabularyExplainations.shuffle();
 
     		//Check if the correct explaination is in the first three of the array. If so, delete it.
-    		for (var i=0; i<3; i++){
-	    	if (randomExplainations[i] == vocabularyExplainations[random_number]) {
-				randomExplainations.splice(i,1); 
-				i=i-1;
+    		for (var i=0; i<10; i++){
+	    	if (random_number2 == random_number1 ||random_number3 == random_number1 || random_number4 == random_number1 || random_number3 == random_number2 || random_number4 == random_number2 || random_number4 == random_number3 ) {
+				random_number1 = Math.floor(Math.random()*words_count);
+				random_number2 = Math.floor(Math.random()*words_count);
+				random_number3 = Math.floor(Math.random()*words_count);
+				random_number4 = Math.floor(Math.random()*words_count);
+				}
+			else
+				{
+				break;
 				}
 			}
-
-    		//pick up the first three wrong explainations and the correct explaination to make a new array	
+    		//pick up the three wrong explainations and make a new array	
+    		var wrong_explaination1 = vocabularyExplainations[random_number2];
+	    	var wrong_explaination2 = vocabularyExplainations[random_number3];
+	    	var wrong_explaination3 = vocabularyExplainations[random_number4];
     		wordChoice = new Array(
-	   	 		newVocabulary[random_number],
-	    		randomExplainations[0],
-	    		randomExplainations[1],
-	    		randomExplainations[2]
+	    		wrong_explaination1,
+	    		wrong_explaination2,
+	    		wrong_explaination3
 			);
 
-    		//make the four explainations in a random order
-    		wordNewChoice = wordChoice.shuffle();
+    		//make a random order, use it as an order to insert the correct explaination in the above array
+    		random_number = Math.floor(Math.random()*3);
+    		correct_explaination = vocabularyExplainations[random_number1];
+    		wordChoice.splice(2,0,correct_explaination);
 
 			//print out the test word and the four explainations
-			$("#vocabulary_test").html(
-				$("#test_form").show()
-				$("#word").write(newVocabulary[words_count])
-				$("#answer1").write(wordNewChoice[0])
-				$("#answer2").write(wordNewChoice[1]) 
-				$("#answer3").write(wordNewChoice[2]) 
-				$("#answer4").write(wordNewChoice[3])  
-			);
+			$(".start_test").hide();
+			$("#subtitle").html("Please pick up the correct explaination from the four explianations listed below:");
+			$("#word").html(newVocabulary[random_number1]);
+			$("#choice1").after('<input type="radio" name="answer" id="answer1" value=wordChoice[0]>'+wordChoice[0]+'<br>');
+			$("#choice2").after('<input type="radio" name="answer" id="answer1" value=wordChoice[1]>'+wordChoice[1]+'<br>');
+			$("#choice3").after('<input type="radio" name="answer" id="answer1" value=wordChoice[2]>'+wordChoice[2]+'<br>');
+			$("#choice3").after('<input type="radio" name="answer" id="answer1" value=wordChoice[3]>'+wordChoice[3]+'<br>');
+			$("#submit").show();
 		});
 
 
@@ -53,16 +63,17 @@ Check if the answer is correct
 -----------------------------------------------------------------------------------------------------------------------------*/
 
    		//compare to find whether the answer is correct, if correct, say congratualtion;if not, show correct answer
-   		var answer =$('input[name=answer:checked']).val();
-		var correct_answer == vocabularyExplainations[random_number];
+   		var answer =$('input:checked').val();
 		$('#submit').click(function(){
-			if (answer == correct_answer)
+		console.log("Good");
+			if (answer == correct_explaination)
 				{
-				$("submit").html('Excellent! <input type="submit" id="restart">Next Question');
+				document.write('Excellent!');
+				$("#submit").html("Next Question");
 				}
 			else{
-				$("submit").html('Sorry, you gave a wrong answer.<br>
-				<input type="submit" id="correctanswer">Correct Answer');				
+				document.write('Sorry, you gave a wrong answer.');	
+				$("#correctanswer").show();		
    				}			 			
    		});   
 
@@ -70,17 +81,18 @@ Check if the answer is correct
 Get the correct answer
 -----------------------------------------------------------------------------------------------------------------------------*/
 		//Get correst answer	
-		$('#correctanswer').click(){
-			html('correct answer is'+correct_answer+'<br>
-			<input type="submit" id="restart">Next Question</div>')
-		};
+		$('#correctanswer').click(function(){
+			document.write('correct answer is'+correct_answer+'<br>');
+			document.write('<input type="submit" class="start_test">Next Question</div>');
+		});
+
+
 
 /*----------------------------------------------------------------------------------------------------------------------------
 Start a new test
 -----------------------------------------------------------------------------------------------------------------------------*/
 		//start a new word test
-		$('#restart').click(function(){
-				location.reload()
-		});
+		//$('#restart').click(function(){
+		//		location.reload()
+		//});
 
-	</script>
