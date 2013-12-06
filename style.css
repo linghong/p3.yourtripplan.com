@@ -1,3 +1,111 @@
+/*
+Title:My P3 Project
+Description: Harvard Extension Class: Dynamic Website Application, Project 3
+URI: http://p3.yourtripplan.com/
+Author: Linghong Chen
+*/
+/*------------------------------------------------------------------------------------------------------------------------
+Main CSS Codes
+---------------------------------------------------------------------------------------------------------------------------
+*/
+article,body{
+	display:block;
+  }
+ 
+body{
+  color:black;
+  font-size:15px;
+  font-family:"Truebuchet MS", "Helvetica", Serif;
+  width:1050px;
+  text-align:center;
+   background-color:#8C2E00; 
+   background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center; 
+  }
+
+article{
+  position:absolute;
+  text-align:justify;
+  width:80%;
+  height:1500px;
+  padding-left:5%;	
+  padding-right:5%;
+  margin-left:5%;
+  margin-right:5%;
+  background-color:#FFFFD5; #FFFFCA;
+  }
+
+h1{
+  font-weight:bold;
+ 	font-size:22px;
+  }
+
+h2{
+  font-weight:bold;
+  font-size:17px;
+  }
+
+h3{
+  text-align:center;
+  font-weight:bold;
+  font-size:15px;
+  }
+
+p{
+  font-size:13px;
+  width:90%;
+  height: auto;
+  padding:10px;
+  text-align:left;
+ }
+
+  
+#title{
+Margin-top:20px;
+  width:90%;
+  height:80px;
+  text-align:center;
+  font-size:36px;
+  padding:10px;
+  }
+
+#subtitle{
+  width:90%;
+  text-align:left;
+  font-size:20px;
+  padding:20px;
+  margin-bottom:20px;
+  }
+.start_test{
+  margin-left:40%;
+  width:230px;
+  height:60px;
+  font-size:20px;
+  padding-top:10px;
+  background-color:#CFC892; 
+  }
+#word{
+  margin-left: 10px;
+  text-align:left;
+  font-size:28px;
+  padding:10px;
+  margin-bottom:10px;
+  }
+ .choice{
+  margin-top:10px;
+  margin-left:45px;
+  font-size:20px;
+  margin-bottom:10px;
+  }
+   #check_answer{
+  margin-left:60px;
+  margin-top:30px;
+  height:40px;
+  width:150px;
+  font-size:16px;
+  background-color:#CFC892; 
+  }
 #vocabulary_test{
 	text-align:center;
 	font-size:28px;

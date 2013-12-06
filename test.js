@@ -50,7 +50,7 @@ Produce a word for test and the four explaination choice
 
 			//print out the test word and the four explainations
 			$(".start_test").hide();
-			$("#subtitle").html("Please pick up the correct explaination from the four explianations listed below:");
+			$("#subtitle").html("Please pick up the correct explaination from the four explainations listed below:");
 			$("#word").html(newVocabulary[random_number1]);
 			//$("#choice1").after('<input type="radio" name="answer" class="answers" id="answer0"><label for="answer0">'+wordChoice[0]+'</label>');
 			//$("#choice2").after('<input type="radio" name="answer" class="answers" id="answer1"><label for="answer1">'+wordChoice[1]+'</label>');
@@ -73,7 +73,8 @@ Check if the answer is correct
    		$('#check_answer').click(function(){
 
 		//find which radio button is checked
-   			var answer =$('input[name=answer]:checked').val();
+			var answer =$('input:radio[name="answer"]:checked').val();
+   			//var answer =$('input[name=answer]:checked').val();
    			correct_answer_number=0;
    			wrong_answer_number =0;
 
