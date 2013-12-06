@@ -150,8 +150,8 @@
 			);
 
 
-//explaination for the above words, one explaination per word
-			vocabularyExplainations = new Array(
+//explanation for the above words, one explaination per word
+			vocabularyExplanations = new Array(
 			"The lady superior of a nunnery",
 			"The superior of a community of monks",
 			"on a bed",

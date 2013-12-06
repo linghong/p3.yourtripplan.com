@@ -1,3 +1,8 @@
-#submit, #correctanswer{
+#vocabulary_test{
+	text-align:center;
+	font-size:28px;
+}
+
+ #see_score{
 visibility:hidden;
 }
