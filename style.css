@@ -28,7 +28,7 @@ article{
   position:absolute;
   text-align:justify;
   width:80%;
-  height:1500px;
+  height:2800px;
   padding-left:5%;	
   padding-right:5%;
   margin-left:5%;
@@ -79,13 +79,13 @@ Margin-top:20px;
   }
 .start_test{
   margin-left:40%;
-  width:230px;
+  width:300px;
   height:60px;
-  font-size:20px;
+  font-size:18px;
   padding-top:10px;
   background-color:#CFC892; 
   }
-#word{
+.word{
   margin-left: 10px;
   text-align:left;
   font-size:28px;
