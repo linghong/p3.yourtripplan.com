@@ -136,9 +136,9 @@ Check if the answer is correct
  		console.log(wordPerformance);	
    	 	alert('You have tested 20 words. '+ correct_answer_number + 'answers are correct, '+wrong_answer_number+ 'answers are wrong.<br>');   				 			
    	});
-/*==============================================================================================================================
+/*--------------------------------------------------------------------------------
 Start a new test
-===============================================================================================================================*/
+-----------------------------------------------------------------------------*/
 
 	//start a new word test
 	$('.re_start').click(function(){
@@ -185,7 +185,6 @@ Produce a word for testing and the four explanation choices
 ----------------------------------------------------------------------------------------*/
 	//Pick up four wordchoices from the practice word library
 	explanationchoice(random_number0,50, practiceExplanations);
-
 
 	//Print out the test word and the four explanations
 	$(".practice_word").html("Question "+i+". "+ practiceVocabulary[random_number0]+
@@ -237,9 +236,9 @@ Check if the answer is correct
 	$('#check_result').click(function(){
 	alert('You have tested '+question_number + ' words. Your made '+ correct_answer_number + ' correct answer, '+wrong_answer_number+ ' wrong answers.'); 
    	});   
-/*==============================================================================================================================
+/*-------------------------------------------------------------------------
 Start a new test
-===============================================================================================================================*/
+----------------------------------------------------------------------------*/
 
 	//start a new word test
 	$('.re_start').click(function(){

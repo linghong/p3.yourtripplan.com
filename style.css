@@ -26,7 +26,7 @@ body{
 
 article{
   position:absolute;
-  text-align:center;
+  text-align:justify;
   width:80%;
   height:3200px;
   padding-left:5%;	
@@ -49,7 +49,7 @@ h2{
   }
 
 p{
-  font-size:13px;
+  font-size:18px;
   width:90%;
   height: auto;
   padding:10px;
@@ -76,28 +76,28 @@ Title , subtitle, menu
   padding:20px;
   margin-bottom:20px;
   }
- #subtitle.p{
-  font-size:16px;
-  } 
-.navorangebar ul {
-  margin-left:-30px; 
-  padding: 3px 3px 0px 3px;
-  list-style-type: none; 
-  list-style-image: none;
-  } 
-.navorangebar  li {
-  display: inline;
-  } 
-.navorangebar  ul li a{
-  text-decoration: none; 
+
+  .navorangebar{
+  margin-top:20px;
+  padding:10px;
+  width:162px;
+  height:30px;
+  background-color:#8C2E00;
+  font-size:18px;
+  color:#FFFFFF;
+  }
+   .navorangebar a{
+   width:180px;
+  height:40px;
+   text-decoration: none; 
   margin: 0px; 
-  padding:9px 3px 11px 3px; 
   color:#001100; 
-  background-color:#FFAA0D;
-  } 
-.navorangebar  ul li a:hover {
-  color: #000; 
-  background-color: #fff;
+  }
+  .navorangebar a:hover {
+  width:180px;
+  height:40px;
+  color: #00000; 
+  background-color: #ffffff;
   } 
 
 /*------------------------------------------------------------------------------------------------------------------------
@@ -106,8 +106,8 @@ Clickable button
 */
 .start_test,.re_start{
   margin-top:20px;
-  margin-left:20%;
-  width:300px;
+  margin-left:50%;
+  width:250px;
   height:50px;
   font-size:18px;
   padding-top:15px;
@@ -139,33 +139,33 @@ Clickable button
   font-size:16px;
   background-color:#CFC892; 
   }
-#check_exerciseanswer{
-  margin-left:60px;
-  margin-top:30px;
-  height:30px;
-  width:180px;
-  font-size:13px;
-  background-color:#FFFF99;
-  }
+
 #start_practice{
   margin-left:200px;
-  margin-top:30px;
+  margin-top:20px;
   height:40px;
-  width:240px;
+  width:120px;
   font-size:16px;
   background-color:#CFC892; 
   }
-#check_result{
-  margin-left:40%;
-  margin-top:30px;
-  height:40px;
-  width:230px;
-  font-size:20px;
+  #check_exerciseanswer{
+  float:left;
+  margin-left:60px;
+  height:35px;
+  width:180px;
+  font-size:13px;
+  padding:5px;
   background-color:#FFFF99;
   }
-#vocabulary_test{
-	text-align:center;
-	font-size:28px;
-}
+#check_result{
+  float:left;
+  margin-left:30px;
+  margin-top:10px;
+  height:35px;
+  width:180px;
+  font-size:13px;
+  padding:5px;
+  background-color:#FFFF99;
+  }
 
 
