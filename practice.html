@@ -8,26 +8,30 @@
  	</head>
 
 	<body>
-		<menu>
-		<div id="test"><a href="">Test</a></div>
-		<div id="Practice"><a href="/practice.html">Practice</a></div>
-		</menu>
 		<article>
-			<div id="title">Let's do a vocabulary practice exercise</div>
-			<div id="subtitle">The test will give you a word and ask you to pick up the correct explaination from the four explanations listed below. If you make a correct answer. This word will be dropped out of the practice library. If you provide a wrong answer, that word will stay longer on the practice library, meaning that you need do it correctly for several time to make it drop out of the practice library. After you finish all questions, a score will show up.</div>
-			<input type ='button' id="start_practice" value='Start Another Word'><br>
-			
-				<div id="new_word"></div>
-				<div  id="score"><div>
-				<div  id="submit"><div>
-				<div id="check_score"></div>
-				<div  id="submit_output"><div>
+			<div id="title">
+				Let's Do a Vocabulary Practice Exercise
+			</div>
+			<div class="navorangebar">
+         		<ul>
+	        		<li><a href='/index.html'>Try Vocabulary Test</li>			
+         		</ul>
+      		</div>
+			<div id="subtitle">
+				<p>Click the "start" button, it will give you a word and ask you to pick up the correct explaination from the four explanation chococe listed below the word. If you make a correct answer, you won't see this word again. If you provide a wrong answer, the site will let you practice again. </p> 
+
+				<p>Keep on clicking the "start" button and answer evey test questions. The site will automactically adjust how often you see a particular word, meaning the more you make a wrong answer for that word, the more frequently you will see that word. </p>
+
+				<p>You can also check your performance score by click the "Check Score" button.</p>
+			</div>
+			<input type ='button' id="start_practice" value='Start'><br>
+			<div class="practice_word"></div>
+			<div  id="practice_submit"><div>
 									
 			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 			<script src='/vocabularylibrary.js'></script>
 			<script src='/test.js'></script>
 
 		</article>
-	</div>
 	</body>
 </html>

@@ -19,25 +19,19 @@ set up a function to generate four word explanation choices to form the wordChoi
 		random_number3 = Math.floor(Math.random()*words_count);
 
     	//Check if the random number is same with each other. If so, regenerate a new one.
-    	for (var m=0; m<10000; m++){
-    	 if (random_number1 == testword_number) 
+    	while (random_number1 == testword_number) 
     	 	{
     	 	random_number1 = Math.floor(Math.random()*words_count);
     	 	}
-	    	else if (random_number2 == testword_number ||random_number2 == random_number1) 
+	    while (random_number2 == testword_number ||random_number2 == random_number1) 
 	    	{
 	    	random_number2 = Math.floor(Math.random()*words_count);
 	    	}
-			else if (random_number3 == testword_number || random_number3 == random_number1 || random_number3 == random_number2) 
+		while(random_number3 == testword_number || random_number3 == random_number1 || random_number3 == random_number2) 
 			{
 			random_number3 = Math.floor(Math.random()*words_count);
 			}
-			else
-			{
-			break;
-			}
-		}
-
+		
     	//pick up the three wrong explanations and make an array for word explanation choices	
     	var wrong_explanation1 = wordExplanations[random_number1];
 	    var wrong_explanation2 = wordExplanations[random_number2];
@@ -51,26 +45,24 @@ set up a function to generate four word explanation choices to form the wordChoi
     	//generate a random number, use it as an order to insert the correct explanation in the word explanation choice array
 		random_number = Math.floor(Math.random()*3);
     	wordChoice.splice(random_number,0,wordExplanations[testword_number]);
-    }
-
-
+	}
 /*===============================================================================================================================
 For Word Test Page
 ===============================================================================================================================*/
 
-$('.start_test').click(function(){
+$('.start_test').one("click", function(){
 
 	//New subtitle and new button:
-	$("#subtitle").html("Please pick up the correct explanation from the four explanations listed below:");
+	$("#subtitle").html('Please pick up the correct explanation from the four explanations listed below:<br><input type ="submit"  class="re_start" id="test_reload" value="Back to Home Page">');
 	$("#submit").html('<input type ="submit"  id="check_testanswer" value="Check Answer"><br>');
-
+	$(".start_test").hide();
 /*------------------------------------------------------------------------------------------
 Produce words for testing and their four explanation choices
 --------------------------------------------------------------------------------------------*/
-	//newVocabulary total word number
+	//Calculate newVocabulary array's total word number
 	words_count = newVocabulary.length
 
-	//Generate an number array used for selceting test words and their correct explanations.
+	//Generate a number array used for selceting test words and their correct explanations.
 	randomNumber= new Array();
 	
 	//Generate 20 test words
@@ -86,8 +78,7 @@ Produce words for testing and their four explanation choices
 	 			};
 	 		}
 		}
-
-	//Use the explanationchoice function to produce four explanation choices for each tested word
+	//Use the explanationchoice function to produce four explanation choices for each test word
 	explanationchoice(randomNumber[i],newVocabulary.length, vocabularyExplanations);
 	
 	//List the test word and the four explanations on the screen
@@ -96,27 +87,33 @@ Produce words for testing and their four explanation choices
 		"Question1","Question2","Question3","Question4","Question5","Question6","Question7","Question8","Question9","Question10","Question11","Question12","Question13","Question14","Question15","Question16","Question17","Question18","Question19","Question20"
 		);
 	q=20-i;
-	console.log(wordQuestion[i]);
+	
+	
 	$(".word").after
 		(
-		"Question "+q+". "+ newVocabulary[randomNumber[i]]+
-		'<br><input type="radio" name="'+wordQuestion[i]+'" class="questions" id="answer0" value="'+wordChoice[0]+'">'+wordChoice[0]+
+		'<div id="question">Question '+q+'. '+ newVocabulary[randomNumber[i]]+
+		'</div><br><input type="radio" name="'+wordQuestion[i]+'" class="questions" id="answer0" value="'+wordChoice[0]+'">'+wordChoice[0]+
 		'<br><input type="radio" name="'+wordQuestion[i]+'" class="questions" id="answer1" value="'+wordChoice[1]+'">'+wordChoice[1]+
 		'<br><input type="radio" name="'+wordQuestion[i]+'" class="questions" id="answer2" value="'+wordChoice[2]+'">'+wordChoice[2]+
 		'<br><input type="radio" name="'+wordQuestion[i]+'" class="questions" id="answer3" value="'+wordChoice[3]+'">'+wordChoice[3]+'<br><br>'
 		);
+
 }
 
 /*----------------------------------------------------------------------------------------
 Check if the answer is correct
 ----------------------------------------------------------------------------------------*/
   	//compare to find whether the answer is correct. If not, show correct answer
- 	$('#check_testanswer').click(function(){
+ 	$('#check_testanswer').one("click", function(){
 	
 		//variable to store correct and wrong answer numbers 
    		correct_answer_number=0;
    		wrong_answer_number =0;
+		
+		//array to store performance
+		wordPerformance = new Array();
 
+   		//Record word that made wrong and correct answer
 		for (i=0;i<20; i++){
 
  			//find which radio button is checked
@@ -129,14 +126,26 @@ Check if the answer is correct
 			if (answer == correct_explanation)
 				{	
 				correct_answer_number = correct_answer_number+1;
+				wordPerformance[i]=1;
 				}
 			else{
-				wrong_answer_number = wrong_answer_number +1;	
+				wrong_answer_number = wrong_answer_number +1;
+				wordPerformance[i]=0;
    				}
- 		}	
-   	 	alert('You have tested 20 words. '+ correct_answer_number + 'answers are correct, '+wrong_answer_number+ 'answers are wrong.');   				 			
-
+ 		}
+ 		console.log(wordPerformance);	
+   	 	alert('You have tested 20 words. '+ correct_answer_number + 'answers are correct, '+wrong_answer_number+ 'answers are wrong.<br>');   				 			
    	});
+/*==============================================================================================================================
+Start a new test
+===============================================================================================================================*/
+
+	//start a new word test
+	$('.re_start').click(function(){
+			location.reload()
+	});
+
+
 });
 
 
@@ -147,25 +156,29 @@ For Word Practice Exercise Page
 /*---------------------------------------------------------------------------------------                
 	Set up word practice array library
 ---------------------------------------------------------------------------------------*/
+	//Set for each word order 
+	var i=0;
 
-	var i=1;		
 	//compare to find whether the answer is correct.If not, show correct answer
- 		correct_answer_number=0;
-   		wrong_answer_number =0;
-		question_number = 0;
-
-$('#start_practice').click(function(){
-	//New subtitle and new button:
-		$("#subtitle").html("Please pick up the correct explanationchoice from the four explanations listed below:");
-		$("#submit").html('<input type ="submit"  id="check_exerciseanswer" value="Check Answer"><br><br>');
+ 	correct_answer_number=0;
+   	wrong_answer_number =0;
+	question_number = 0;
 
 	//Generate a word practice array.
 	practiceVocabulary = newVocabulary;
-	practiceExplanations = vocabularyExplanations; 
+	practiceExplanations = vocabularyExplanations;
+
+$('#start_practice').click(function(){
+	//Question number increase by each click
+	i=i+1;
+
+	//New subtitle and new button:
+	$("#subtitle").html('Please pick up the correct explanation choice from the four explanations listed below:<br><input type ="submit"  class="re_start" id="practice_reload" value="Reload to Start a New Test">');
+	$("#practice_submit").html('<input type ="submit"  id="check_exerciseanswer" value="Check Answer for this Word"><br><input type ="submit"  id="check_result" value="Check My Test Score"><br><br>');
 
 	//Generate a random number used for selecting test word and the explanation.(Only 50 words from the library for practice)
-		words_count=50;
-		random_number0 = Math.floor(Math.random()*words_count);
+	words_count=50;
+	random_number0 = Math.floor(Math.random()*words_count);
 
 /*----------------------------------------------------------------------------------------
 Produce a word for testing and the four explanation choices
@@ -175,19 +188,17 @@ Produce a word for testing and the four explanation choices
 
 
 	//Print out the test word and the four explanations
-		//$(".start_test").hide();
+	$(".practice_word").html("Question "+i+". "+ practiceVocabulary[random_number0]+
+	'<br><input type="radio" name="answer" class="questions" id="answer0" value="'+wordChoice[0]+'">'+wordChoice[0]+
+	'<br><input type="radio" name="answer" class="questions" id="answer1" value="'+wordChoice[1]+'">'+wordChoice[1]+
+	'<br><input type="radio" name="answer" class="questions" id="answer2" value="'+wordChoice[2]+'">'+wordChoice[2]+
+	'<br><input type="radio" name="answer" class="questions" id="answer3" value="'+wordChoice[3]+'">'+wordChoice[3]+'<br><br>'
+	);
 
-		$("#new_word").html("Question "+i+". "+ practiceVocabulary[random_number0]+
-		'<br><input type="radio" name="answer" class="questions" id="answer0" value="'+wordChoice[0]+'">'+wordChoice[0]+
-		'<br><input type="radio" name="answer" class="questions" id="answer1" value="'+wordChoice[1]+'">'+wordChoice[1]+
-		'<br><input type="radio" name="answer" class="questions" id="answer2" value="'+wordChoice[2]+'">'+wordChoice[2]+
-		'<br><input type="radio" name="answer" class="questions" id="answer3" value="'+wordChoice[3]+'">'+wordChoice[3]+'<br><br>'
-		);
-		i=i+1;
 /*----------------------------------------------------------------------------------------     
 Check if the answer is correct
 ----------------------------------------------------------------------------------------*/
-  	$('#check_exerciseanswer').click(function(){
+  	$('#check_exerciseanswer').one("click", function(){
 
  		//find which radio button is checked
 		var answer =$('input:radio[name="answer"]:checked').val();
@@ -199,14 +210,14 @@ Check if the answer is correct
 		//compare the checked answer to correct answer. Tell the answer results and count the correct the correct and wrong answer numbers
 		if (answer == correct_explanation)
 			{
+			//delete word from the practiceVocabulary library
 			practiceVocabulary.splice(random_number0,1); 
 			practiceExplanations.splice(random_number0,1); 
 			alert("Excellent!");
 			correct_answer_number = correct_answer_number+1;
-			practiceVocabulary = newVocabulary;
-			practiceExplanations = vocabularyExplanations; 
 			}
 		else{
+			//add another copy of the word in the practiceVocabulary library, that makes it shows up more often
 			practiceVocabulary.unshift(practice_word); 
 			practiceExplanations.unshift(correct_explanation); 
 			alert('Sorry, you gave a wrong answer. Correct answer is: '+correct_explanation+'<br>');	
@@ -214,28 +225,28 @@ Check if the answer is correct
    			}
    		question_number=question_number+1;
    	});
-	
-	//$('#check_result').click(function(){
-			 			
-   	//});   
 
+	//When finshed all words, show alert, reset the practiceVocabulary practiceExplanations to orignal elements
+	if (practiceVocabulary.length ==0){
+	alert("Congraulation! You have sucessfully memorized all words in our vocabulary library.");
+	practiceVocabulary = newVocabulary;
+	practiceExplanations = vocabularyExplanations; 
+	}
 
- 	function result(question_number,correct_answer_number,wrong_answer_number)  	
- 	{
- 	alert('You have tested '+question_number + ' words. Your made '+ correct_answer_number + ' correct answer, '+wrong_answer_number+ ' wrong answers.'); 
-	console.log(question_number)  	
- 	}
- 	$('#check_score').change(">Check My Practice Result</button><br>");
-});
-
-
+	//check result
+	$('#check_result').click(function(){
+	alert('You have tested '+question_number + ' words. Your made '+ correct_answer_number + ' correct answer, '+wrong_answer_number+ ' wrong answers.'); 
+   	});   
 /*==============================================================================================================================
 Start a new test
 ===============================================================================================================================*/
 
 	//start a new word test
-	$('#restart').click(function(){
+	$('.re_start').click(function(){
 			location.reload()
 	});
 
+
+
+});
 

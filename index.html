@@ -8,28 +8,23 @@
  	</head>
 
 	<body>
-		
-		<menu>
-		<div id="test">Test</div>
-		<div id="Practice"><a href="/practice.html">Practice</a></div>
-		</menu>
 		<article>
-			<div id="title">Let's do a vocabulary test</div>
-			<div id="subtitle">The test will give you a word and ask you to pick up the correct explaination from the four explianations listed below. After you finish all questions, a score will show up.</div>
-			<input type ='button' class="start_test" value='Start A New Vocabulary Test'><br>
-
-				<div class="word"></div>
-
-				<div  id="score"><div>
-				<div  id="submit"><div>
-				<div  id="submit_output"><div>
-				<div  id="restart">Restart<div>
-				
-	
+			<div id="title">Let's Do A Vocabulary Test</div>
+			<div class="navorangebar">
+         		<ul>	
+					<li><a href='/practice.html'>Try Practice Test</a></li>
+         		</ul>
+      		</div>
+			<div id="subtitle">
+			The test will give you words and ask you to select the correct explaination from the four explanations it gives you. According to your performance, the site will either automactically drops out any words you are familiar with, but let you practice more for the words you haven't grasped. The word you made more times of wrong choice, you will meet it more often. 
+			</div>
+			
+			<input type ='button' class="start_test" value='Start A Vocabulary Test'><br>
+			<div class="word"></div>
+			<div  id="submit"></div>					
 			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 			<script src='/vocabularylibrary.js'></script>
 			<script src='/test.js'></script>
 		</article>
-	</div>
 	</body>
 </html>
