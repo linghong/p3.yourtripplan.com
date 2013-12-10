@@ -60,12 +60,17 @@ p{
 Title , subtitle, menu
 ---------------------------------------------------------------------------------------------------------------------------
 */
+#preface{
+  padding:10px;
+  font-size:20px;
+  color:#8C2E00; 
+}
 #title{
   Margin-top:20px;
   width:90%;
-  height:80px;
+  height:40px;
   text-align:center;
-  font-size:36px;
+  font-size:30px;
   padding:10px;
   }
 
@@ -80,11 +85,9 @@ Title , subtitle, menu
   .navorangebar{
   margin-top:20px;
   padding:10px;
-  width:162px;
-  height:30px;
-  background-color:#8C2E00;
-  font-size:18px;
-  color:#FFFFFF;
+  width:460px;
+  height:28px;
+  font-size:22px;
   }
    .navorangebar a{
    width:180px;
@@ -148,7 +151,7 @@ Clickable button
   font-size:16px;
   background-color:#CFC892; 
   }
-  #check_exerciseanswer{
+#check_exerciseanswer{
   float:left;
   margin-left:60px;
   height:35px;

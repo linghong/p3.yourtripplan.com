@@ -103,7 +103,7 @@ Produce words for testing and their four explanation choices
 /*----------------------------------------------------------------------------------------
 Check if the answer is correct
 ----------------------------------------------------------------------------------------*/
-  	//compare to find whether the answer is correct. If not, show correct answer
+  	//compare to find whether the answer is correct. Give the performance information.
  	$('#check_testanswer').one("click", function(){
 	
 		//variable to store correct and wrong answer numbers 
@@ -111,7 +111,7 @@ Check if the answer is correct
    		wrong_answer_number =0;
 		
 		//array to store performance
-		wordPerformance = new Array();
+		//wordPerformance = new Array();
 
    		//Record word that made wrong and correct answer
 		for (i=0;i<20; i++){
@@ -126,14 +126,14 @@ Check if the answer is correct
 			if (answer == correct_explanation)
 				{	
 				correct_answer_number = correct_answer_number+1;
-				wordPerformance[i]=1;
+			//	wordPerformance[i]=1;
 				}
 			else{
 				wrong_answer_number = wrong_answer_number +1;
-				wordPerformance[i]=0;
+			//	wordPerformance[i]=0;
    				}
  		}
- 		console.log(wordPerformance);	
+ 			
    	 	alert('You have tested 20 words. '+ correct_answer_number + 'answers are correct, '+wrong_answer_number+ 'answers are wrong.<br>');   				 			
    	});
 /*--------------------------------------------------------------------------------
@@ -172,8 +172,9 @@ $('#start_practice').click(function(){
 	//Question number increase by each click
 	i=i+1;
 
-	//New subtitle and new button:
-	$("#subtitle").html('Please pick up the correct explanation choice from the four explanations listed below:<br><input type ="submit"  class="re_start" id="practice_reload" value="Reload to Start a New Test">');
+	//New  buttons
+	$("#subtitle").html('Keep on clicking the "start" button and answering every question. According to your performance, the site will automactically drops out any words you are familiar with from the practice library, but let you practice more for the words you have not grasped. You can also check your performance by clicking the "Check Score" button.');
+	$("#re_load").html('<input type ="submit"  class="re_start" id="practice_reload" value="Reload to Start a New Test">');
 	$("#practice_submit").html('<input type ="submit"  id="check_exerciseanswer" value="Check Answer for this Word"><br><input type ="submit"  id="check_result" value="Check My Test Score"><br><br>');
 
 	//Generate a random number used for selecting test word and the explanation.(Only 50 words from the library for practice)
@@ -183,8 +184,8 @@ $('#start_practice').click(function(){
 /*----------------------------------------------------------------------------------------
 Produce a word for testing and the four explanation choices
 ----------------------------------------------------------------------------------------*/
-	//Pick up four wordchoices from the practice word library
-	explanationchoice(random_number0,50, practiceExplanations);
+	//Pick up four wordexplanation choice from explanationchoice library
+	explanationchoice(random_number0,50, vocabularyExplanations);
 
 	//Print out the test word and the four explanations
 	$(".practice_word").html("Question "+i+". "+ practiceVocabulary[random_number0]+
